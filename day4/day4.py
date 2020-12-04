@@ -77,11 +77,11 @@ if __name__ == "__main__":
     iyr:2011 ecl:brn hgt:59in
     '''
     ).strip())
-    assert len([p for p in read_batch(f) if is_valid(p)]) == 2
+    assert sum(map(is_valid, read_batch(f))) == 2
 
     print("part 1")
     with open("input.txt") as f:
-        num_valid = len([p for p in read_batch(f) if is_valid(p)])
+        num_valid = sum(map(is_valid, read_batch(f)))
         print(num_valid)
 
     f = StringIO(dedent(
@@ -123,5 +123,5 @@ if __name__ == "__main__":
 
     print("part 2")
     with open("input.txt") as f:
-        num_valid = len([p for p in read_batch(f) if is_valid_new(p)])
+        num_valid = sum(map(is_valid_new, read_batch(f)))
         print(num_valid)
