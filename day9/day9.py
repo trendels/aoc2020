@@ -11,7 +11,6 @@ def check_number(window, n):
 
 def check_stream(stream, window_size=25):
     preamble = itertools.islice(stream, window_size)
-    pos = 0
     window = list(preamble)
     for n in stream:
         yield n, check_number(window, n)
