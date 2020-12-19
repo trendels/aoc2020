@@ -20,9 +20,9 @@ def get_interval_and_offset(a, offset_a, b, offset_b):
 
 
 def get_earliest_timestamp(schedule):
-    offsets = ((int(l), d) for d, l in enumerate(schedule.split(",")) if l != "x")
-    interval, offset = next(offsets)
-    for (next_interval, next_offset) in offsets:
+    offsets = [(int(l), d) for d, l in enumerate(schedule.split(",")) if l != "x"]
+    interval, offset = offsets[0]
+    for (next_interval, next_offset) in offsets[1:]:
         interval, offset = get_interval_and_offset(
             interval, offset, next_interval, next_offset,
         )
