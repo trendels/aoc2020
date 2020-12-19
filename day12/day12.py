@@ -37,8 +37,7 @@ def move(ship, instruction):
     raise RuntimeError(f"Invalid instruction: {instruction}")
 
 
-def rotate(waypoint, ship, degrees):
-    x, y, _ = ship
+def rotate(waypoint, degrees):
     dx, dy = waypoint
     steps = abs(degrees//90)
     for _ in range(steps):
@@ -61,9 +60,9 @@ def move_part2(ship, waypoint, instruction):
     if action == "W":
         return ship, (dx - value, dy)
     if action == "L":
-        return ship, rotate(waypoint, ship, -value)
+        return ship, rotate(waypoint, -value)
     if action == "R":
-        return ship, rotate(waypoint, ship, value)
+        return ship, rotate(waypoint, value)
     if action == "F":
         x, y, direction = ship
         return (x + value*dx, y + value*dy, direction), waypoint
